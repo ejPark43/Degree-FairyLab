@@ -6,17 +6,23 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
   return (
     <span>
       <Container>
         <HeaderBorder>
-          <Logo src={FairyLabLogo} alt="FairyLab Logo" />
+          <Logo
+            onClick={() => navigate("/")}
+            src={FairyLabLogo}
+            alt="FairyLab Logo"
+          />
           <Menu style={{ width: "340px", marginRight: "30px" }}>
-            <MenuItem>STORY</MenuItem>
-            <MenuItem>SHOP</MenuItem>
-            <MenuItem>ARCHIVE</MenuItem>
+            <MenuItem onClick={() => navigate("/story")}>STORY</MenuItem>
+            <MenuItem onClick={() => navigate("/shop")}>SHOP</MenuItem>
+            <MenuItem onClick={() => navigate("/archive")}>ARCHIVE</MenuItem>
           </Menu>
           <Menu style={{ width: "170px", marginRight: "40px" }}>
             <MenuItem>
