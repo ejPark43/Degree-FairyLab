@@ -2,7 +2,7 @@ interface Colors {
   primary: string;
   secondary: string;
   text: string;
-
+  black: string;
   background: string;
 }
 
@@ -18,6 +18,7 @@ export const lightTheme: Theme = {
     primary: "#CDF1FF", // 가장 많이 쓰이는 색
     secondary: "#00ACFF", // 두번째로 많이 쓰이는 색
     text: "#2E9DFB", // 세 번째로 많이 쓰이는 색
+    black: "#000",
   },
 };
 
@@ -28,5 +29,6 @@ export const darkTheme: Theme = {
     primary: "#CDF1FF",
     secondary: "#B979FE",
     text: "#ECEBFB",
+    black: "#000",
   },
 };
