@@ -3,8 +3,8 @@ import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
 import MyPage from "./pages/MyPage";
 import StoryPage from "./pages/StoryPage";
-import ShopPage from "./components/ShopPage";
-import ArchivePage from "./components/ArchivePage";
+import ShopPage from "./pages/ShopPage";
+import ArchivePage from "./pages/ArchivePage";
 
 const router = createBrowserRouter([
   {
