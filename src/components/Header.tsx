@@ -6,10 +6,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <span>
       <Container>
@@ -20,9 +21,24 @@ function Header() {
             alt="FairyLab Logo"
           />
           <Menu style={{ width: "340px", marginRight: "30px" }}>
-            <MenuItem onClick={() => navigate("/story")}>STORY</MenuItem>
-            <MenuItem onClick={() => navigate("/shop")}>SHOP</MenuItem>
-            <MenuItem onClick={() => navigate("/archive")}>ARCHIVE</MenuItem>
+            <MenuItem
+              $active={location.pathname === "/story"}
+              onClick={() => navigate("/story")}
+            >
+              STORY
+            </MenuItem>
+            <MenuItem
+              $active={location.pathname === "/shop"}
+              onClick={() => navigate("/shop")}
+            >
+              SHOP
+            </MenuItem>
+            <MenuItem
+              $active={location.pathname === "/archive"}
+              onClick={() => navigate("/archive")}
+            >
+              ARCHIVE
+            </MenuItem>
           </Menu>
           <Menu style={{ width: "170px", marginRight: "40px" }}>
             <MenuItem>
@@ -48,8 +64,10 @@ export default Header;
 
 const Container = styled.div`
   display: flex;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 100%;
+  position: relative;
+  z-index: 10;
 `;
 
 const HeaderBorder = styled.div`
@@ -77,13 +95,14 @@ const Menu = styled.div`
   color: black;
   font-size: 20px;
 `;
-const MenuItem = styled.div`
+const MenuItem = styled.div<{ $active?: boolean }>`
   display: flex;
   font-family: "Pretendard";
   font-weight: 500;
   cursor: pointer;
   transition: color 0.1s ease;
-  color: ${({ theme }) => lightTheme.colors.black};
+  color: ${({ $active, theme }) =>
+    $active ? lightTheme.colors.secondary : lightTheme.colors.black};
 
   &:hover {
     color: ${({ theme }) => lightTheme.colors.secondary};
