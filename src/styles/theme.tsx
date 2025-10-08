@@ -3,6 +3,7 @@ interface Colors {
   secondary: string;
   text: string;
   black: string;
+  white: string;
   background: string;
 }
 
@@ -19,6 +20,7 @@ export const lightTheme: Theme = {
     secondary: "#00ACFF", // 두번째로 많이 쓰이는 색
     text: "#2E9DFB", // 세 번째로 많이 쓰이는 색
     black: "#000",
+    white: "#fff",
   },
 };
 
@@ -30,5 +32,6 @@ export const darkTheme: Theme = {
     secondary: "#B979FE",
     text: "#ECEBFB",
     black: "#000",
+    white: "#fff",
   },
 };

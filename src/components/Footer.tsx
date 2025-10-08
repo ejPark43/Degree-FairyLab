@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { lightTheme } from "../styles/theme";
 import FairyLabLogo from "../assets/images/FairyLabLogo.svg";
+import { useLocation } from "react-router-dom";
 
 function Footer() {
+  const location = useLocation();
   return (
-    <Container>
+    <Container $active={location.pathname === "/story"}>
       <FooterBorder>
         <FooterUpper>
           <LeftItem>
@@ -39,12 +41,13 @@ function Footer() {
 
 export default Footer;
 
-const Container = styled.div`
+const Container = styled.div<{ $active?: boolean }>`
   display: flex;
   /* border: 2px solid red; */
   width: 100%;
   color: ${({ theme }) => lightTheme.colors.secondary};
-  background-color: ${({ theme }) => lightTheme.colors.primary};
+  background-color: ${({ $active, theme }) =>
+    $active ? lightTheme.colors.white : lightTheme.colors.primary};
 `;
 
 const FooterBorder = styled.div`
