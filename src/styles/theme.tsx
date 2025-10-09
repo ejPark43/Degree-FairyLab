@@ -4,6 +4,7 @@ interface Colors {
   text: string;
   black: string;
   white: string;
+  pink: string;
   background: string;
 }
 
@@ -21,6 +22,7 @@ export const lightTheme: Theme = {
     text: "#2E9DFB", // 세 번째로 많이 쓰이는 색
     black: "#000",
     white: "#fff",
+    pink: "#FF7DAD",
   },
 };
 
@@ -33,5 +35,6 @@ export const darkTheme: Theme = {
     text: "#ECEBFB",
     black: "#000",
     white: "#fff",
+    pink: "#FF7DAD",
   },
 };
