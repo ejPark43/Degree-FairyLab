@@ -132,7 +132,7 @@ const float = keyframes`
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-30px);
+    transform: translateY(-55px);
   }
 
   100% {
