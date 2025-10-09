@@ -1,3 +1,4 @@
+import CustomCursor from "./components/CustomCursor";
 import router from "./router";
 import { RouterProvider } from "react-router";
 // import "./App.css";
@@ -5,6 +6,7 @@ import { RouterProvider } from "react-router";
 function App() {
   return (
     <div>
+      <CustomCursor />
       <RouterProvider router={router} />
     </div>
   );
