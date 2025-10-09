@@ -104,9 +104,6 @@ export default function CustomCursor() {
         }
 
         body {
-          height: 100vh;
-          width: 100vw;
-          overflow: hidden;
           background-color: transparent;
         }
         `}
