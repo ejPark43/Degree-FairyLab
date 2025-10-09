@@ -56,11 +56,21 @@ const Container = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 1200px;
-  background-color: ${({ theme }) => lightTheme.colors.primary};
-  border-radius: 50% 50% 0 0;
-  padding-top: 100px;
+  height: 950px;
+  /* background-color: ${({ theme }) => lightTheme.colors.primary}; */
+  padding-top: 110px;
   /* z-index: 11; */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    height: 1400px;
+    background-color: ${({ theme }) => lightTheme.colors.primary};
+    border-radius: 49% 49% 0 0;
+    z-index: -1; /* 뒤로 */
+  }
 `;
 
 const Logo = styled.img`
@@ -79,7 +89,7 @@ const LeftDecoration = styled.img`
   position: absolute;
   height: 450px;
   left: 0px;
-  top: 260px;
+  top: 285px;
   /* border: 2px solid gold; */
 `;
 const RightDecoration = styled.img`
@@ -87,7 +97,7 @@ const RightDecoration = styled.img`
   position: absolute;
   height: 420px;
   right: 0;
-  top: 170px;
+  top: 190px;
 `;
 const StoryText = styled.div`
   display: flex;
@@ -122,8 +132,9 @@ const float = keyframes`
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-30px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -142,7 +153,6 @@ const Clouds = styled.img<{
   height: ${({ $size }) => ($size ? `${$size}px` : "200px")};
   animation: ${float} ${({ $duration }) => $duration || 6}s ease-in-out infinite;
   animation-delay: ${({ $delay }) => $delay || 0}s;
-  opacity: 0.9;
   pointer-events: none;
   z-index: 2;
 `;
