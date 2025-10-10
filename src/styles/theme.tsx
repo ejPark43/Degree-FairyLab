@@ -5,6 +5,7 @@ interface Colors {
   black: string;
   white: string;
   pink: string;
+  favorite: string;
   background: string;
 }
 
@@ -23,6 +24,7 @@ export const lightTheme: Theme = {
     black: "#000",
     white: "#fff",
     pink: "#FF7DAD",
+    favorite: "#73D7FF",
   },
 };
 
@@ -36,5 +38,6 @@ export const darkTheme: Theme = {
     black: "#000",
     white: "#fff",
     pink: "#FF7DAD",
+    favorite: "#73D7FF",
   },
 };

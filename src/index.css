@@ -1,7 +1,21 @@
-html,
+/* html,
 body {
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
   cursor: none;
 }
+* {
+  box-sizing: border-box;
+} */
+
+html,
+body {
+  width: 100%;
+  cursor: none;
+  overflow-x: hidden;
+}
+
 /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

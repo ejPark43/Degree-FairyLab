@@ -43,7 +43,8 @@ export default Footer;
 
 const Container = styled.div<{ $active?: boolean }>`
   display: flex;
-  /* border: 2px solid red; */
+  height: 410px;
+  box-sizing: border-box;
   width: 100%;
   color: ${({ theme }) => lightTheme.colors.secondary};
   background-color: ${({ $active, theme }) =>
@@ -54,9 +55,8 @@ const FooterBorder = styled.div`
   display: flex;
   flex-direction: column;
   /* border: 2px solid gold; */
-
   width: 100%;
-  margin: 0 40px 0 40px;
+  margin: 0 65px 0 65px;
 `;
 
 const FooterUpper = styled.div`
@@ -64,7 +64,9 @@ const FooterUpper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 30px 0 25px 0;
+  box-sizing: border-box;
+  padding: 70px 0 55px 0;
+
   border-bottom: 1px solid ${({ theme }) => lightTheme.colors.secondary};
 `;
 
@@ -73,14 +75,18 @@ const FooterDowner = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 20px 0 20px 0;
+  height: 100%;
+
+  /* box-sizing: border-box; */
+  /* padding: 20px 0 20px 0; */
 `;
 
 /* 공통스타일 */
 const BaseItem = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 12px;
+  font-weight: 400;
+  font-size: 18px;
   /* border: 2px solid pink; */
   padding: 10px 0px;
   > span {
@@ -95,7 +101,7 @@ const LeftItem = styled(BaseItem)`
 const RightItem = styled(BaseItem)`
   text-align: end;
   font-weight: 600;
-  font-size: 10px;
+  font-size: 13px;
   > span {
     padding: 0;
   }
@@ -105,7 +111,7 @@ const Logo = styled.img`
   display: flex;
   position: relative;
   left: -10px;
-  height: 100px;
+  height: 120px;
   /* border: 1px solid black; */
   object-fit: contain;
   cursor: pointer;
