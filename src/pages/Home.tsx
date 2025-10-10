@@ -16,7 +16,6 @@ const Container = styled.div`
   display: flex;
   width: 100%;
   z-index: 10;
-  border: 2px solid blue;
   justify-content: center;
 `;
 const Character = styled.img`
