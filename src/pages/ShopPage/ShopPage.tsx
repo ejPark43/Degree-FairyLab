@@ -23,5 +23,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding-top: 40px;
   padding-bottom: 100px;
 `;
