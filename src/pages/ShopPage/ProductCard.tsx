@@ -54,14 +54,15 @@ const ImageContainer = styled.div`
   border-radius: 20px;
   overflow: hidden;
   margin-bottom: 13px;
+  flex-shrink: 0; /* ✅ flex나 grid에서 자동 줄어드는 거 방지 */
 `;
 
 const ProductImage = styled.img`
   width: 100%;
   height: 100%;
-
   object-fit: cover;
   display: block;
+  flex-shrink: 0;
 `;
 
 const SoldOutOverlay = styled.div`
