@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "name": "요정 양말",
+    "price": 8900,
+    "image": "src/assets/images/shopPage/fairy_socks.png",
+    "isSoldOut": false
+  },
+  {
+    "id": 2,
+    "name": "요정 볼펜",
+    "price": 4900,
+    "image": "src/assets/images/shopPage/fairy_ballpen.png",
+    "isSoldOut": false
+  },
+  {
+    "id": 3,
+    "name": "요정 마우스패드",
+    "price": 11900,
+    "image": "src/assets/images/shopPage/fairy_mousepad.png",
+    "isSoldOut": false
+  },
+  {
+    "id": 4,
+    "name": "요정 터프팅 러그 소형",
+    "price": 79900,
+    "image": "src/assets/images/shopPage/fairy_rug.png",
+    "isSoldOut": false
+  },
+  {
+    "id": 5,
+    "name": "요정 띠부띠부씰 (2종 세트)",
+    "price": 2900,
+    "image": "src/assets/images/shopPage/fairy_sticker.jpg",
+    "isSoldOut": false
+  },
+  {
+    "id": 6,
+    "name": "요정 컬러링 펜 세트 (6개입)",
+    "price": 9900,
+    "image": "src/assets/images/shopPage/fairy_colorPen.jpg",
+    "isSoldOut": false
+  },
+  {
+    "id": 7,
+    "name": "요정 키캡",
+    "price": 8900,
+    "image": "src/assets/images/shopPage/fairy_keycap.png",
+    "isSoldOut": false
+  },
+  {
+    "id": 8,
+    "name": "요정 스마트폰 하드 케이스",
+    "price": 12900,
+    "image": "src/assets/images/shopPage/fairy_phoneCase.jpg",
+    "isSoldOut": false
+  },
+  {
+    "id": 9,
+    "name": "요정 아크릴 스탠드",
+    "price": 13900,
+    "image": "src/assets/images/shopPage/fairy_acryl.jpg",
+    "isSoldOut": false
+  }
+]
