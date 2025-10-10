@@ -18,14 +18,14 @@
     "name": "요정 마우스패드",
     "price": 11900,
     "image": "src/assets/images/shopPage/fairy_mousepad.png",
-    "isSoldOut": false
+    "isSoldOut": true
   },
   {
     "id": 4,
     "name": "요정 터프팅 러그 소형",
     "price": 79900,
     "image": "src/assets/images/shopPage/fairy_rug.png",
-    "isSoldOut": false
+    "isSoldOut": true
   },
   {
     "id": 5,
@@ -46,7 +46,7 @@
     "name": "요정 키캡",
     "price": 8900,
     "image": "src/assets/images/shopPage/fairy_keycap.png",
-    "isSoldOut": false
+    "isSoldOut": true
   },
   {
     "id": 8,
