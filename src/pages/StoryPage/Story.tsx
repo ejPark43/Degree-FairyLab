@@ -33,18 +33,32 @@ function Story() {
       <StoryText>
         <span className="title">실종된 요정을 찾습니다!</span>
         <span className="text">
-          Fairy Lab은 다양한 일상의 재미를 ‘요정’이라는 캐릭터로 시각화한 문구
-          굿즈 브랜드로, 무감한 일상 속 어딘가에 숨어 있는 요정을 찾아 작지만
-          분명한 ‘재미’를 다시 꺼내 보여주는 것을 지향합니다.
+          Fairy Lab은 다양한 일상의 재미를 <span className=" bold">요정</span>
+          이라는 캐릭터로 시각화한
+          <span className=" bold"> 데스크테리어Deskterior </span>브랜드로,
+          무감한 일상 속 <br />
+          어딘가에 숨어 있는 요정을 찾아 작지만 분명한
+          <span className=" bold"> 재미</span>를 다시 꺼내 보여주는 것을
+          지향합니다.
+        </span>
+        <span className="text">
+          Fairy Lab이 데스크를 중심 공간으로 삼은 이유는, 책상은 우리가 하루 중
+          가장 오래 머무는 개인적인 장소이자, 각자의 일상이 고스란히 담긴
+          공간이기 때문입니다. 단조롭고 반복적인 책상 위에서도 작은 재미와
+          온기를 발견할 수 있다는 믿음
+          <br />
+          아래, Fairy Lab은 요정 캐릭터와 오브제를 통해 일상 속 감정과 취향을
+          시각적으로 풀어냅니다.
         </span>
         <span className="text">
           각 요정은 커피, 음악, 날씨, 쇼핑처럼 일상의 소소한 즐거움을 상징하며,
-          이들의 이야기와 성격은 이후 Fairy Lab의 문구 캐릭터와 제품 디자인으로
-          확장하여, 브랜드의 세계관을 시각적으로 경험하고 이해하는 경험을
-          제공하고자 합니다.
+          이들의 이야기와 성격은 이후 Fairy Lab의 <br /> 캐릭터와 제품
+          디자인으로 확장하여, 브랜드의 세계관을{" "}
+          <span className=" bold">보이는 즐거움</span>으로 경험할 수 있도록
+          제안합니다.
         </span>
       </StoryText>
-      <Divider />
+      {/* <Divider /> */}
     </Container>
   );
 }
@@ -101,7 +115,7 @@ const RightDecoration = styled.img`
 `;
 const StoryText = styled.div`
   display: flex;
-  width: 760px;
+  width: 835px;
   /* border: 2px solid green; */
   flex-direction: column;
   justify-content: start;
@@ -113,19 +127,22 @@ const StoryText = styled.div`
   }
   .text {
     font-family: "Pretendard";
-    font-size: medium;
+    font-size: 18px;
     font-weight: 300;
     padding: 10px 0px 10px 0;
-    line-height: 1.2;
+    line-height: 1.29;
+  }
+  .bold {
+    font-weight: 600;
   }
 `;
-const Divider = styled.div`
-  display: flex;
-  width: 90%;
-  margin: 100px;
-  background-color: ${({ theme }) => lightTheme.colors.secondary};
-  height: 1px;
-`;
+// const Divider = styled.div`
+//   display: flex;
+//   width: 90%;
+//   margin: 200px;
+//   background-color: ${({ theme }) => lightTheme.colors.secondary};
+//   height: 1px;
+// `;
 
 const float = keyframes`
   0% {
