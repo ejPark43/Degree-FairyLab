@@ -3,14 +3,20 @@ import styled from "styled-components";
 import { lightTheme } from "../../styles/theme";
 import FavoriteIconFilled from "@mui/icons-material/Favorite";
 import FavoriteIconEmpty from "@mui/icons-material/FavoriteBorder";
+import { useNavigate } from "react-router-dom";
+
 function ProductCard({ id, name, price, image, isSoldOut, liked, onLike }) {
-  {
-    console.log(image);
-  }
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/detail/${id}`);
+  };
+
+  console.log("image " + image);
   return (
-    <Card>
+    <Card onClick={handleClick}>
       <ImageContainer>
-        <ProductImage src={image} alt={name} />
+        <ProductImage loading="lazy" src={image} alt={name} />
         {isSoldOut && (
           <SoldOutOverlay>
             <span className="sold-out english">SOLD OUT</span>

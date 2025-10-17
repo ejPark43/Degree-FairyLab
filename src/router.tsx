@@ -5,6 +5,7 @@ import MyPage from "./pages/MyPage";
 import StoryPage from "./pages/StoryPage/StoryPage";
 import ShopPage from "./pages/ShopPage/ShopPage";
 import ArchivePage from "./pages/ArchivePage";
+import DetailPage from "./pages/DetailPage/DetailPage";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "archive",
         element: <ArchivePage />,
+      },
+      {
+        path: "detail/:id",
+        element: <DetailPage />,
       },
     ],
   },
