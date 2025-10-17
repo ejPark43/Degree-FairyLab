@@ -4,62 +4,89 @@
     "name": "요정 양말",
     "price": 8900,
     "image": "/ProductImgs/fairy_socks.png",
-    "isSoldOut": false
+    "isSoldOut": false,
+    "description": "지루하고 바쁜 일상 생활 속 귀여운 요정 양말 코디로 소소한 재미를 만들자! 순수 코튼 100% 함유된 국내 제작 양말.",
+    "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
+    "size": ["Free (230~260mm)"]
   },
   {
     "id": 2,
     "name": "요정 볼펜",
     "price": 4900,
     "image": "/ProductImgs/fairy_ballpen.png",
-    "isSoldOut": false
+    "isSoldOut": false,
+    "description": "부드러운 필기감의 요정 일러스트 볼펜. 0.5mm 블랙잉크 사용.",
+    "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
+    "size": ["길이 14cm"]
   },
   {
     "id": 3,
     "name": "요정 마우스패드",
     "price": 11900,
     "image": "/ProductImgs/fairy_mousepad.png",
-    "isSoldOut": true
+    "isSoldOut": true,
+    "description": "부드러운 패브릭 재질의 요정 마우스패드. 미끄럼 방지 고무 패드로 안정적인 사용감.",
+    "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
+    "size": ["210 x 180mm"]
   },
   {
     "id": 4,
     "name": "요정 터프팅 러그 소형",
     "price": 79900,
     "image": "/ProductImgs/fairy_rug.png",
-    "isSoldOut": true
+    "isSoldOut": true,
+    "description": "요정 캐릭터 모티브의 핸드메이드 터프팅 러그. 인테리어 포인트로 완벽.",
+    "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
+    "size": ["600 x 400mm"]
   },
   {
     "id": 5,
     "name": "요정 띠부띠부씰 (2종 세트)",
     "price": 2900,
     "image": "/ProductImgs/fairy_sticker.jpg",
-    "isSoldOut": false
+    "isSoldOut": false,
+    "description": "귀여운 요정 캐릭터의 스티커 세트. 노트북, 다이어리 어디든 잘 어울려요.",
+    "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
+    "size": ["100 x 150mm (2장 세트)"]
   },
   {
     "id": 6,
     "name": "요정 컬러링 펜 세트 (6개입)",
     "price": 9900,
     "image": "/ProductImgs/fairy_colorPen.jpg",
-    "isSoldOut": false
+    "isSoldOut": false,
+    "description": "6가지 파스텔 색감의 요정 컬러링 펜 세트. 부드럽게 써지는 워터베이스 잉크.",
+    "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
+    "size": ["펜 길이 14cm"]
   },
   {
     "id": 7,
     "name": "요정 키캡",
     "price": 8900,
     "image": "/ProductImgs/fairy_keycap.png",
-    "isSoldOut": true
+    "isSoldOut": true,
+    "description": "기계식 키보드 호환 요정 캐릭터 키캡. PBT 재질로 내구성이 높습니다.",
+    "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
+    "size": ["높이 9mm (체리 프로파일)"]
   },
   {
     "id": 8,
     "name": "요정 스마트폰 하드 케이스",
     "price": 12900,
     "image": "/ProductImgs/fairy_phoneCase.jpg",
-    "isSoldOut": false
+    "isSoldOut": false,
+    "description": "요정 그래픽이 들어간 하드 케이스. iPhone 및 Galaxy 시리즈 호환.",
+    "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
+    "size": ["기종별 상이"]
   },
   {
     "id": 9,
     "name": "요정 아크릴 스탠드",
     "price": 13900,
     "image": "/ProductImgs/fairy_acryl.jpg",
-    "isSoldOut": false
+    "isSoldOut": false,
+    "description": "책상 위를 밝히는 요정 아크릴 스탠드. 투명 아크릴에 고품질 인쇄.",
+    "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
+    "size": ["높이 100mm"]
   }
 ]
