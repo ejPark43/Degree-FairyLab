@@ -6,6 +6,7 @@ import ContactUsDeco from "../../assets/images/storyPage/contactDeco.svg";
 function ContactUs() {
   return (
     <Container>
+      <Divider />
       <Panels>
         <LeftPanel>
           <span className="title">CONTACT US</span>
@@ -48,22 +49,30 @@ function ContactUs() {
 }
 
 export default ContactUs;
-
+const Divider = styled.div`
+  display: flex;
+  width: 90%;
+  margin: 0 200px 100px 200px;
+  margin-top: 0;
+  background-color: ${({ theme }) => lightTheme.colors.secondary};
+  height: 1px;
+`;
 const Container = styled.div`
   display: flex;
-  top: -300px;
+  /* border: 2px solid black; */
+  /* top: -300px; */
   flex-direction: column;
   width: 100%;
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => lightTheme.colors.primary};
   padding-bottom: 280px;
+  /* margin-top: 100px; */
 `;
 const Panels = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   height: 555px;
   /* border: 2px solid green; */
 `;
