@@ -6,6 +6,7 @@ import StoryPage from "./pages/StoryPage/StoryPage";
 import ShopPage from "./pages/ShopPage/ShopPage";
 import ArchivePage from "./pages/ArchivePage";
 import DetailPage from "./pages/DetailPage/DetailPage";
+import CartPage from "./pages/CartPage/CartPage";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "detail/:id",
         element: <DetailPage />,
+      },
+      {
+        path: "cart",
+        element: <CartPage />,
       },
     ],
   },
