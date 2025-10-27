@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import ProductGrid from "./ProductGrid";
 import SortDropdown from "./SortDropdown";
-import ProductIndex from "./ProductIndex";
 
 function ShopPage() {
   return (
@@ -10,7 +9,6 @@ function ShopPage() {
       <div>
         <SortDropdown />
         <ProductGrid />
-        <ProductIndex />
       </div>
     </Container>
   );

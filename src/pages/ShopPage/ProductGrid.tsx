@@ -9,20 +9,24 @@ function ProductGrid() {
     JSON.parse(localStorage.getItem("likedItems") || "[]")
   );
   const [products, setProducts] = useState<
-    | {
-        id: number;
-        name: string;
-        price: number;
-        image: string;
-        isSoldOut: boolean;
-      }[]
-    | null
-  >(null);
+    {
+      id: number;
+      name: string;
+      price: number;
+      image: string;
+      isSoldOut: boolean;
+    }[]
+  >([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const productsPerPage = 9;
+  const totalPages = 3;
 
   useEffect(() => {
+    // 로딩 시뮬레이션
     setTimeout(() => {
       setProducts(productsData);
-    }, 200); // 로딩 테스트용 딜레이
+    }, 200);
   }, []);
 
   const toggleLike = (id: number) => {
@@ -33,19 +37,33 @@ function ProductGrid() {
     localStorage.setItem("likedItems", JSON.stringify(updated));
   };
 
+  // 현재 페이지의 상품 slice
+  const indexOfLast = currentPage * productsPerPage;
+  const indexOfFirst = indexOfLast - productsPerPage;
+  const currentProducts = products.slice(indexOfFirst, indexOfLast);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <Container>
-      {products ? (
-        <Grid>
-          {products.map((p) => (
-            <ProductCard
-              key={p.id}
-              {...p}
-              liked={liked.includes(p.id)}
-              onLike={() => toggleLike(p.id)}
-            />
-          ))}
-        </Grid>
+      {products.length > 0 ? (
+        currentProducts.length > 0 ? (
+          <Grid>
+            {currentProducts.map((p) => (
+              <ProductCard
+                key={p.id}
+                {...p}
+                liked={liked.includes(p.id)}
+                onLike={() => toggleLike(p.id)}
+              />
+            ))}
+          </Grid>
+        ) : (
+          <EmptyMessage>상품 준비중</EmptyMessage>
+        )
       ) : (
         <Grid>
           {Array.from({ length: 9 }).map((_, i) => (
@@ -58,15 +76,31 @@ function ProductGrid() {
           ))}
         </Grid>
       )}
+
+      {/* 페이지네이션 */}
+      <Pagination>
+        {[1, 2, 3].map((page) => (
+          <PageNumber
+            key={page}
+            $active={page === currentPage}
+            onClick={() => handlePageChange(page)}
+          >
+            {page}
+          </PageNumber>
+        ))}
+      </Pagination>
     </Container>
   );
 }
 
 export default ProductGrid;
 
+/* --- styled-components --- */
+
 const Container = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 `;
 
@@ -74,6 +108,36 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 52px;
+`;
+
+const EmptyMessage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 100%;
+  font-size: 22px;
+  color: #888;
+`;
+
+const Pagination = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 60px 0 100px 0;
+`;
+
+const PageNumber = styled.div<{ $active?: boolean }>`
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+  color: ${({ $active }) => ($active ? "#000" : "#888")};
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${lightTheme.colors.secondary};
+  }
 `;
 
 const SkeletonCard = styled.div`
