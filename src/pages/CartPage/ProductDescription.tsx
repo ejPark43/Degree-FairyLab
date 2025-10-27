@@ -1,42 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { lightTheme } from "../../styles/theme";
-const ProductDescription = () => {
+import productsData from "../../data/product.json";
+
+type ProductDescriptionProps = {
+  product: {
+    id: number;
+    name: string;
+    price: number;
+    image: string;
+  };
+  item: {
+    id: number;
+    color: string | null;
+    size: string | null;
+    checked?: boolean;
+  };
+  onDelete: () => void;
+  onCheck: (checked: boolean) => void; // ✅ 체크 상태 변경 핸들러
+};
+
+const ProductDescription = ({
+  product,
+  item,
+  onDelete,
+  onCheck,
+}: ProductDescriptionProps) => {
   return (
     <ProductDescWrapper>
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          height: "220px",
-          gap: "30px",
-          border: "2px solid red",
-          //   alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <CheckBox type="checkbox" />
+      <CheckBox
+        type="checkbox"
+        checked={item.checked ?? false}
+        onChange={(e) => onCheck(e.target.checked)}
+      />
 
-        <ProductImageWrapper>
-          <ProductImage src="/ProductImgs/fairy_socks.png" alt="상품 이미지" />
-        </ProductImageWrapper>
+      <ProductImageWrapper>
+        <ProductImage src={product.image} alt={product.name} />
+      </ProductImageWrapper>
 
-        <ProductInfo>
-          <div
-            style={{
-              display: "flex",
-              width: "100%",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <ProductName>요정 양말</ProductName> <DeleteBox>×</DeleteBox>
-          </div>
-          <ProductPrice>₩8,900</ProductPrice>
-          <Delivery>배송비 3,000원 (50,000원 이상 무료배송)</Delivery>
-          <OptionInfo>옵션: BLUE / FREE</OptionInfo>
-        </ProductInfo>
-      </div>
+      <ProductInfo>
+        <ProductHeader>
+          <ProductName>{product.name}</ProductName>
+          <DeleteBox onClick={onDelete}>×</DeleteBox>
+        </ProductHeader>
+        <ProductPrice>₩{product.price.toLocaleString()}</ProductPrice>
+        <Delivery>배송비 3,000원 (50,000원 이상 무료배송)</Delivery>
+        {(item.color || item.size) && (
+          <OptionInfo>
+            옵션: {item.color ?? ""} {item.size ? ` / ${item.size}` : ""}
+          </OptionInfo>
+        )}
+      </ProductInfo>
     </ProductDescWrapper>
   );
 };
@@ -44,7 +58,6 @@ const ProductDescription = () => {
 export default ProductDescription;
 const ProductDescWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   width: 960px;
   height: 100%;
   padding: 40px 40px 40px 0;
@@ -52,10 +65,23 @@ const ProductDescWrapper = styled.div`
   border-right: 0.5px solid rgba(0, 0, 0, 0.2);
 `;
 
-const CheckBox = styled.input`
+const ProductList = styled.div`
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+`;
 
-  /* justify-content: left; */
+const ProductRow = styled.div`
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 20px;
+`;
+
+const CheckBox = styled.input`
   width: 24px;
   height: 24px;
   cursor: pointer;
@@ -80,24 +106,26 @@ const ProductImage = styled.img`
 
 const ProductInfo = styled.div`
   display: flex;
-  height: 100%;
   flex-direction: column;
-  /* justify-content: s; */
-
-  gap: 25px;
   flex-grow: 1;
+  gap: 25px;
+`;
+
+const ProductHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const ProductName = styled.div`
   font-size: 24px;
   font-weight: 600;
-  color: #000;
 `;
 
 const ProductPrice = styled.div`
   font-size: 20px;
   font-weight: 500;
-  color: #00acff;
+  color: ${lightTheme.colors.secondary};
 `;
 
 const Delivery = styled.div`
@@ -113,19 +141,24 @@ const OptionInfo = styled.div`
 
 const DeleteBox = styled.div`
   display: flex;
-  justify-self: end;
+  justify-content: center;
+  align-items: center;
   width: 34px;
   height: 34px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  font-size: 32px;
-  font-weight: 400;
+  font-size: 28px;
   color: rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
 
   &:hover {
     background-color: #f0f0f0;
   }
+`;
+
+const EmptyMessage = styled.div`
+  font-size: 20px;
+  color: #777;
+  text-align: center;
+  width: 100%;
+  padding: 50px 0;
 `;

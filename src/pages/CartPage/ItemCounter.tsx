@@ -1,25 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-function ItemCounter() {
-  const [count, setCount] = useState(1);
+type ItemCounterProps = {
+  quantity: number;
+  onChange: (newQuantity: number) => void;
+};
 
+function ItemCounter({ quantity, onChange }: ItemCounterProps) {
   const decrease = () => {
-    if (count > 1) setCount(count - 1);
+    if (quantity > 1) onChange(quantity - 1);
   };
 
   const increase = () => {
-    setCount(count + 1);
+    onChange(quantity + 1);
   };
 
   return (
-    <>
-      <CounterWrapper>
-        <Button onClick={decrease}>−</Button>
-        <Count>{count}</Count>
-        <Button onClick={increase}>＋</Button>
-      </CounterWrapper>
-    </>
+    <CounterWrapper>
+      <Button onClick={decrease}>−</Button>
+      <Count>{quantity}</Count>
+      <Button onClick={increase}>＋</Button>
+    </CounterWrapper>
   );
 }
 
@@ -57,7 +58,6 @@ const Count = styled.div`
   align-items: center;
   width: 66px;
   height: 100%;
-
   text-align: center;
   font-weight: 500;
   font-size: 20px;
