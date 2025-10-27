@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import productsData from "../../data/product.json";
 import { lightTheme } from "../../styles/theme";
@@ -18,6 +18,7 @@ type ProductType = {
 };
 
 function DetailPage() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [product, setProduct] = useState<ProductType | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
@@ -30,6 +31,54 @@ function DetailPage() {
     const found = productsData.find((item) => item.id === Number(id));
     if (found) setProduct(found);
   }, [id]);
+
+  const [cartAdded, setCartAdded] = useState<boolean>(() => {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+    // id만 비교할 수 있도록 설정
+    return cartItems.some((item: any) => item.id === Number(id));
+  });
+
+  const addToCart = (goToCart = false) => {
+    if (!selectedColor || !selectedSize) {
+      alert("색상과 사이즈를 선택해주세요!");
+      return;
+    }
+
+    const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+
+    // 같은 상품 + 같은 옵션이 이미 장바구니에 있는지 확인
+    const isAlreadyInCart = cartItems.some(
+      (item: any) =>
+        item.id === Number(id) &&
+        item.color === selectedColor &&
+        item.size === selectedSize
+    );
+
+    if (isAlreadyInCart) {
+      if (goToCart == false) alert("이미 장바구니에 넣은 상품입니다!");
+      if (goToCart) navigate("/cart");
+      return;
+    }
+
+    // 장바구니에 새로운 아이템 추가
+    const newItem = {
+      id: Number(id),
+      color: selectedColor,
+      size: selectedSize,
+      quantity: 1,
+    };
+
+    const updatedCart = [...cartItems, newItem];
+    localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+    setCartAdded(true);
+
+    alert("장바구니에 추가되었습니다!");
+
+    // “구매하기” 버튼 누른 경우 => cart 페이지로 이동
+    if (goToCart) {
+      navigate("/cart");
+    }
+  };
 
   const toggleLike = () => {
     const savedLikes = JSON.parse(localStorage.getItem("likedItems") || "[]");
@@ -111,40 +160,54 @@ function DetailPage() {
             </DeliveryInfo>
 
             {/* 색상 옵션 */}
-            <OptionList>
-              {product.color.map((c) => (
-                <OptionItem key={c} onClick={() => setSelectedColor(c)}>
-                  <ColorBox $active={selectedColor === c}>
-                    {selectedColor === c && (
-                      <WingIcon src={CartoonWing} alt="wing" />
-                    )}
-                  </ColorBox>
-                  <OptionLabel $active={selectedColor === c}>{c}</OptionLabel>
-                </OptionItem>
-              ))}
-            </OptionList>
-
+            {product.color.length > 0 ? (
+              <OptionSection>
+                <OptionTitle>COLOR</OptionTitle>
+                <OptionList>
+                  {product.color.map((c) => (
+                    <OptionItem key={c} onClick={() => setSelectedColor(c)}>
+                      <ColorBox $active={selectedColor === c}>
+                        {selectedColor === c && (
+                          <WingIcon src={CartoonWing} alt="wing" />
+                        )}
+                      </ColorBox>
+                      <OptionLabel $active={selectedColor === c}>
+                        {c}
+                      </OptionLabel>
+                    </OptionItem>
+                  ))}
+                </OptionList>
+              </OptionSection>
+            ) : (
+              <></>
+            )}
             {/* 사이즈 옵션 */}
-            <OptionSection>
-              <OptionTitle>SIZE</OptionTitle>
-              <OptionList>
-                {product.size.map((s) => (
-                  <OptionItem key={s} onClick={() => setSelectedSize(s)}>
-                    <ColorBox $active={selectedSize === s}>
-                      {selectedSize === s && (
-                        <WingIcon src={CartoonWing} alt="wing" />
-                      )}
-                    </ColorBox>
-                    <OptionLabel $active={selectedSize === s}>{s}</OptionLabel>
-                  </OptionItem>
-                ))}
-              </OptionList>
-            </OptionSection>
+            {product.size.length > 0 ? (
+              <OptionSection>
+                <OptionTitle>SIZE</OptionTitle>
+                <OptionList>
+                  {product.size.map((s) => (
+                    <OptionItem key={s} onClick={() => setSelectedSize(s)}>
+                      <ColorBox $active={selectedSize === s}>
+                        {selectedSize === s && (
+                          <WingIcon src={CartoonWing} alt="wing" />
+                        )}
+                      </ColorBox>
+                      <OptionLabel $active={selectedSize === s}>
+                        {s}
+                      </OptionLabel>
+                    </OptionItem>
+                  ))}
+                </OptionList>
+              </OptionSection>
+            ) : (
+              <></>
+            )}
           </InfoPart>
           <ButtonPart>
             <ButtonGroup>
-              <BuyButton>구매하기</BuyButton>
-              <CartButton>장바구니</CartButton>
+              <BuyButton onClick={() => addToCart(true)}>구매하기</BuyButton>
+              <CartButton onClick={() => addToCart(false)}>장바구니</CartButton>
             </ButtonGroup>
           </ButtonPart>
         </InfoWrapper>
@@ -284,13 +347,13 @@ const OptionSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `;
 
 const OptionTitle = styled.div`
   font-weight: 700;
   font-size: 20px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   margin-bottom: 10px;
   color: ${lightTheme.colors.black};
 `;
