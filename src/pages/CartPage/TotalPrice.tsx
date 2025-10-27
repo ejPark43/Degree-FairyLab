@@ -1,28 +1,44 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
-import { lightTheme } from "../../styles/theme";
+import productsData from "../../data/product.json";
 
-function TotalPrice() {
+function TotalPrice({ cartItems }: { cartItems: any[] }) {
+  const DELIVERY_FEE = 3000;
+
+  const { totalPrice, selectedCount } = useMemo(() => {
+    const selected = cartItems.filter((item) => item.checked);
+    const total = selected.reduce((sum, item) => {
+      const product = productsData.find((p) => p.id === item.id);
+      const price = product ? product.price : 0;
+      return sum + price * (item.quantity ?? 1);
+    }, 0);
+    return { totalPrice: total, selectedCount: selected.length };
+  }, [cartItems]);
+
+  const finalPrice = selectedCount > 0 ? totalPrice + DELIVERY_FEE : 0;
+
   return (
     <Container>
       <Price>
-        <span>총 상품금액</span> <span>₩8,900</span>
+        <span>총 상품금액</span>
+        <span>₩{totalPrice.toLocaleString()}</span>
       </Price>
       <Price>
-        <span>총 배송비</span> <span>₩3,000</span>
-      </Price>
-      <Price>
-        <span></span> <span></span>
+        <span>총 배송비</span>
+        <span>₩{selectedCount > 0 ? DELIVERY_FEE.toLocaleString() : 0}</span>
       </Price>
       <Price style={{ marginTop: "25px" }}>
-        <span>결제금액</span>{" "}
-        <span style={{ fontWeight: "600", fontSize: "28px" }}>₩11,900</span>
+        <span>결제금액</span>
+        <span style={{ fontWeight: "600", fontSize: "28px" }}>
+          ₩{finalPrice.toLocaleString()}
+        </span>
       </Price>
     </Container>
   );
 }
 
 export default TotalPrice;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -36,9 +52,7 @@ const Container = styled.div`
 
 const Price = styled.div`
   display: flex;
-  width: 100%;
-  color: black;
-  font-size: 20px;
-  font-weight: 400px;
   justify-content: space-between;
+  font-size: 20px;
+  color: black;
 `;
