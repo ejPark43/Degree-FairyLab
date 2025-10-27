@@ -15,9 +15,9 @@
     "price": 4900,
     "image": "/ProductImgs/fairy_ballpen.png",
     "isSoldOut": false,
-    "description": "부드러운 필기감의 요정 일러스트 볼펜. 0.5mm 블랙잉크 사용.",
-    "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
-    "size": ["길이 14cm"]
+    "description": "부드러운 필기감의 요정 일러스트 볼펜. 요정 볼펜으로 원하는 것을 쓰면 다 이루어진다나..? 0.5mm 블랙잉크 사용.",
+    "color": ["BLUE", "PINK"],
+    "size": []
   },
   {
     "id": 3,
@@ -25,9 +25,9 @@
     "price": 11900,
     "image": "/ProductImgs/fairy_mousepad.png",
     "isSoldOut": true,
-    "description": "부드러운 패브릭 재질의 요정 마우스패드. 미끄럼 방지 고무 패드로 안정적인 사용감.",
-    "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
-    "size": ["210 x 180mm"]
+    "description": "부드러운 PVC 재질의 요정 마우스패드. 자꾸 보면 기분이 좋아지는 효과가 있다. 미끄럼 방지 고무 패드로 안정적인 사용감을 제공.",
+    "color": [],
+    "size": []
   },
   {
     "id": 4,
@@ -35,9 +35,9 @@
     "price": 79900,
     "image": "/ProductImgs/fairy_rug.png",
     "isSoldOut": true,
-    "description": "요정 캐릭터 모티브의 핸드메이드 터프팅 러그. 인테리어 포인트로 완벽.",
-    "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
-    "size": ["600 x 400mm"]
+    "description": "요정 캐릭터 모티브의 핸드메이드 터프팅 러그. 보들보들한 감촉이 일품이며, 인테리어 포인트로 완벽.",
+    "color": [],
+    "size": []
   },
   {
     "id": 5,
@@ -47,7 +47,7 @@
     "isSoldOut": false,
     "description": "귀여운 요정 캐릭터의 스티커 세트. 노트북, 다이어리 어디든 잘 어울려요.",
     "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
-    "size": ["100 x 150mm (2장 세트)"]
+    "size": []
   },
   {
     "id": 6,
@@ -56,8 +56,8 @@
     "image": "/ProductImgs/fairy_colorPen.jpg",
     "isSoldOut": false,
     "description": "6가지 파스텔 색감의 요정 컬러링 펜 세트. 부드럽게 써지는 워터베이스 잉크.",
-    "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
-    "size": ["펜 길이 14cm"]
+    "color": [],
+    "size": []
   },
   {
     "id": 7,
@@ -67,7 +67,7 @@
     "isSoldOut": true,
     "description": "기계식 키보드 호환 요정 캐릭터 키캡. PBT 재질로 내구성이 높습니다.",
     "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
-    "size": ["높이 9mm (체리 프로파일)"]
+    "size": ["FREE"]
   },
   {
     "id": 8,
@@ -77,7 +77,7 @@
     "isSoldOut": false,
     "description": "요정 그래픽이 들어간 하드 케이스. iPhone 및 Galaxy 시리즈 호환.",
     "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
-    "size": ["기종별 상이"]
+    "size": ["기종 직접입력"]
   },
   {
     "id": 9,
@@ -87,6 +87,6 @@
     "isSoldOut": false,
     "description": "책상 위를 밝히는 요정 아크릴 스탠드. 투명 아크릴에 고품질 인쇄.",
     "color": ["BLUE", "PINK", "PURPLE", "YELLOW"],
-    "size": ["높이 100mm"]
+    "size": ["60mmX40mm"]
   }
 ]

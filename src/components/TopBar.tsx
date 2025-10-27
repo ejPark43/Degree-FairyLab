@@ -13,9 +13,9 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   font-family: "PeoplefirstNeatLoud", "Courier New", Courier, monospace;
-  font-weight: 100;
-  font-size: 20px;
+  font-weight: 400;
+  font-size: 24px;
   width: 100%;
-  height: 50px;
+  height: 59px;
   background-color: ${lightTheme.colors.primary};
 `;
