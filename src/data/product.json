@@ -17,7 +17,7 @@
     "isSoldOut": false,
     "description": "부드러운 필기감의 요정 일러스트 볼펜. 요정 볼펜으로 원하는 것을 쓰면 다 이루어진다나..? 0.5mm 블랙잉크 사용.",
     "color": ["BLUE", "PINK"],
-    "size": ["길이 14cm"]
+    "size": []
   },
   {
     "id": 3,
