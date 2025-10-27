@@ -21,7 +21,7 @@ const Container = styled.div`
 const Character = styled.img`
   display: flex;
   position: relative;
-  top: -192px;
+  top: -219px;
   justify-content: center;
   height: 900px;
   object-fit: contain;
