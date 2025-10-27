@@ -39,8 +39,15 @@ function DetailPage() {
   });
 
   const addToCart = (goToCart = false) => {
-    if (!selectedColor || !selectedSize) {
-      alert("색상과 사이즈를 선택해주세요!");
+    if (!product) return;
+
+    if (product.color.length > 0 && !selectedColor) {
+      alert("색상을 선택해주세요!");
+      return;
+    }
+    // 사이즈 옵션이 있는 상품이라면 반드시 선택되어야 함
+    if (product.size.length > 0 && !selectedSize) {
+      alert("사이즈를 선택해주세요!");
       return;
     }
 
