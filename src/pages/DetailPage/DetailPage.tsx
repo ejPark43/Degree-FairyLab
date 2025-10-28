@@ -297,9 +297,10 @@ const ImageWrapper = styled.div`
   background-color: #f7f7f7;
 
   position: relative;
+  object-fit: contain;
+  border-radius: 20px;
   overflow: hidden;
-  /* margin-bottom: 13px; */
-  flex-shrink: 0; /* flex나 grid에서 자동으로 크기 줄어드는 거 방지 */
+  margin-bottom: 13px;
 `;
 
 const ProductImage = styled.img`
@@ -318,16 +319,15 @@ const SoldOutOverlay = styled.div`
   inset: 0;
   background-color: #5c5c5c80;
   color: ${({ theme }) => lightTheme.colors.white};
-  padding-bottom: 15px;
 
   .english {
-    font-weight: 600;
+    font-weight: 500;
     /* font-style: SemiBold; */
-    font-size: 60px;
+    font-size: 36px;
   }
   .korean {
-    font-weight: 500;
-    font-size: 32px;
+    font-weight: 400;
+    font-size: 24px;
   }
 `;
 
