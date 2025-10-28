@@ -23,6 +23,7 @@ function DetailPage() {
   const [product, setProduct] = useState<ProductType | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [notifyChecked, setNotifyChecked] = useState(false);
   const [liked, setLiked] = useState<boolean>(() => {
     const savedLikes = JSON.parse(localStorage.getItem("likedItems") || "[]");
     return savedLikes.includes(Number(id)); // 현재 상품이 좋아요 목록에 있으면 true
@@ -125,7 +126,13 @@ function DetailPage() {
       <ProductInfo>
         {/* 이미지 */}
         <ImageWrapper>
-          <ProductImage src={product.image} alt={product.name} />
+          <ProductImage loading="lazy" src={product.image} alt={product.name} />
+          {product.isSoldOut && (
+            <SoldOutOverlay>
+              <span className="sold-out english">SOLD OUT</span>
+              <span className="sold-out korean">품절</span>
+            </SoldOutOverlay>
+          )}
         </ImageWrapper>
 
         {/* 상세 정보 */}
@@ -212,10 +219,32 @@ function DetailPage() {
             )}
           </InfoPart>
           <ButtonPart>
-            <ButtonGroup>
-              <BuyButton onClick={() => addToCart(true)}>구매하기</BuyButton>
-              <CartButton onClick={() => addToCart(false)}>장바구니</CartButton>
-            </ButtonGroup>
+            {product.isSoldOut ? (
+              <>
+                <ButtonGroup>
+                  <DisabledButton disabled>구매하기</DisabledButton>
+                  <DisabledButton disabled>장바구니</DisabledButton>
+                </ButtonGroup>
+
+                <RestockNotify
+                  onClick={() => setNotifyChecked((prev) => !prev)}
+                >
+                  <ColorBox $active={notifyChecked}>
+                    {notifyChecked && <WingIcon src={CartoonWing} alt="wing" />}
+                  </ColorBox>
+                  <OptionLabel $active={notifyChecked}>
+                    재입고 알림 받기
+                  </OptionLabel>
+                </RestockNotify>
+              </>
+            ) : (
+              <ButtonGroup>
+                <BuyButton onClick={() => addToCart(true)}>구매하기</BuyButton>
+                <CartButton onClick={() => addToCart(false)}>
+                  장바구니
+                </CartButton>
+              </ButtonGroup>
+            )}
           </ButtonPart>
         </InfoWrapper>
       </ProductInfo>
@@ -265,14 +294,41 @@ const ImageWrapper = styled.div`
   min-width: 900px;
   height: 820px;
   border-radius: 20px;
-  overflow: hidden;
   background-color: #f7f7f7;
+
+  position: relative;
+  overflow: hidden;
+  /* margin-bottom: 13px; */
+  flex-shrink: 0; /* flex나 grid에서 자동으로 크기 줄어드는 거 방지 */
 `;
 
 const ProductImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+`;
+const SoldOutOverlay = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  background-color: #5c5c5c80;
+  color: ${({ theme }) => lightTheme.colors.white};
+  padding-bottom: 15px;
+
+  .english {
+    font-weight: 600;
+    /* font-style: SemiBold; */
+    font-size: 60px;
+  }
+  .korean {
+    font-weight: 500;
+    font-size: 32px;
+  }
 `;
 
 const InfoWrapper = styled.div`
@@ -408,8 +464,8 @@ const OptionLabel = styled.div<{ $active?: boolean }>`
 const ButtonGroup = styled.div`
   display: flex;
   gap: 22px;
-  /* margin-top: 150px; */
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
+  margin-bottom: 30px;
 `;
 
 const BaseButton = styled.button`
@@ -430,9 +486,39 @@ const BaseButton = styled.button`
   }
 `;
 
+const DisabledButton = styled(BaseButton)`
+  border-color: #ccc;
+  background-color: #f2f2f2;
+  color: #999;
+  cursor: not-allowed;
+
+  &:hover {
+    background-color: #f2f2f2;
+    color: #999;
+  }
+`;
+
 const BuyButton = styled(BaseButton)``;
 const CartButton = styled(BaseButton)``;
 
+const RestockNotify = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 20px;
+  color: #000000;
+
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  label {
+    cursor: pointer;
+    user-select: none;
+  }
+`;
 const LoadingContainer = styled.div`
   display: flex;
   justify-content: center;
