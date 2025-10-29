@@ -39,19 +39,26 @@ const ProductDescription = ({
       </ProductImageWrapper>
 
       <ProductInfo>
-        <ProductHeader>
-          <ProductName>{product.name}</ProductName>
-          <DeleteBox onClick={onDelete}>
-            <CloseIcon fontSize="inherit" />
-          </DeleteBox>
-        </ProductHeader>
-        <ProductPrice>₩{product.price.toLocaleString()}</ProductPrice>
-        <Delivery>배송비 3,000원 (50,000원 이상 무료배송)</Delivery>
-        {(item.color || item.size) && (
-          <OptionInfo>
-            옵션: {item.color ?? ""} {item.size ? ` / ${item.size}` : ""}
-          </OptionInfo>
-        )}
+        <InfoSection>
+          <ProductHeader>
+            <ProductName>{product.name}</ProductName>
+            <DeleteBox onClick={onDelete}>
+              <CloseIcon fontSize="inherit" />
+            </DeleteBox>
+          </ProductHeader>
+          <ProductPrice>₩{product.price.toLocaleString()}</ProductPrice>
+        </InfoSection>
+        <InfoSection style={{ justifyContent: "end" }}>
+          <Delivery>배송 ₩3,000</Delivery>
+          {(item.color || item.size) && (
+            <OptionInfo>
+              [ 옵션: {item.color ?? ""} {item.size ? ` / ${item.size}` : ""}]
+              <span style={{ marginLeft: "21px", fontWeight: "bold" }}>
+                옵션변경
+              </span>
+            </OptionInfo>
+          )}
+        </InfoSection>
       </ProductInfo>
     </ProductDescWrapper>
   );
@@ -77,7 +84,7 @@ const CheckBox = styled.input`
 const ProductImageWrapper = styled.div`
   width: 241px;
   height: 220px;
-  border-radius: 10px;
+  border-radius: 20px;
   overflow: hidden;
   background-color: #f7f7f7;
   display: flex;
@@ -95,35 +102,42 @@ const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  gap: 25px;
+  /* gap: 25px; */
 `;
 
 const ProductHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 26px;
 `;
 
 const ProductName = styled.div`
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
 `;
 
 const ProductPrice = styled.div`
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
-  color: ${lightTheme.colors.secondary};
+  color: ${lightTheme.colors.black};
 `;
 
+const InfoSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 100%;
+`;
 const Delivery = styled.div`
-  font-size: 18px;
-  color: #000;
-  opacity: 0.7;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.25);
 `;
 
 const OptionInfo = styled.div`
-  font-size: 18px;
-  color: #000;
+  margin-top: 20px;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.25);
 `;
 
 const DeleteBox = styled.div`
