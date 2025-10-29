@@ -57,7 +57,7 @@ function Header() {
             <MenuItem>
               <FavoriteIcon fontSize="inherit" />
             </MenuItem>
-            <MenuItem>
+            <MenuItem onClick={() => navigate("/cart")}>
               <ShoppingCartIcon fontSize="inherit" />
             </MenuItem>
           </IconMenu>
