@@ -30,7 +30,10 @@ function Header() {
               STORY
             </MenuItem>
             <MenuItem
-              $active={location.pathname === "/shop"}
+              $active={
+                location.pathname === "/shop" ||
+                location.pathname.startsWith("/detail/")
+              }
               onClick={() => navigate("/shop")}
             >
               SHOP
