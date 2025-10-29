@@ -30,7 +30,10 @@ function Header() {
               STORY
             </MenuItem>
             <MenuItem
-              $active={location.pathname === "/shop"}
+              $active={
+                location.pathname === "/shop" ||
+                location.pathname.startsWith("/detail/")
+              }
               onClick={() => navigate("/shop")}
             >
               SHOP
@@ -54,7 +57,7 @@ function Header() {
             <MenuItem>
               <FavoriteIcon fontSize="inherit" />
             </MenuItem>
-            <MenuItem>
+            <MenuItem onClick={() => navigate("/cart")}>
               <ShoppingCartIcon fontSize="inherit" />
             </MenuItem>
           </IconMenu>

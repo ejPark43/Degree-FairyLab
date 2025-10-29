@@ -42,6 +42,9 @@ function CartPage() {
 
   // 개별 상품 삭제
   const removeItem = (target: CartItem) => {
+    const confirmed = window.confirm("해당 상품을 삭제하시겠습니까?");
+    if (!confirmed) return; // 취소 누르면 종료
+
     const updated = cartItems.filter(
       (item) =>
         !(
@@ -96,6 +99,7 @@ function CartPage() {
     localStorage.setItem("cartItems", JSON.stringify(updated));
   };
 
+  // 선택한 상품 주문
   const handleOrderSelected = () => {
     const selected = cartItems.filter((item) => item.checked);
 
@@ -104,8 +108,23 @@ function CartPage() {
       return;
     }
 
-    const confirmed = window.confirm("선택한 상품을 주문하시겠습니까?");
+    const totalSelectedPrice = selected.reduce((acc, item) => {
+      const product = getProduct(item.id);
+      if (!product) return acc;
+      return acc + product.price * (item.quantity ?? 1);
+    }, 0);
+
+    const confirmed = window.confirm(
+      `선택한 상품을 주문하시겠습니까?\n\n결제 금액: ₩${(
+        totalSelectedPrice + 3000
+      ).toLocaleString()} (배송비 포함)`
+    );
     if (!confirmed) return;
+
+    // 선택된 상품만 제거
+    const updated = cartItems.filter((item) => !item.checked);
+    setCartItems(updated);
+    localStorage.setItem("cartItems", JSON.stringify(updated));
 
     alert("주문이 완료되었습니다.");
     navigate("/shop");
@@ -118,10 +137,22 @@ function CartPage() {
       return;
     }
 
+    const totalAllPrice = cartItems.reduce((acc, item) => {
+      const product = getProduct(item.id);
+      if (!product) return acc;
+      return acc + product.price * (item.quantity ?? 1);
+    }, 0);
+
     const confirmed = window.confirm(
-      "장바구니의 모든 상품을 주문하시겠습니까?"
+      `장바구니의 모든 상품을 주문하시겠습니까?\n\n결제 금액: ₩${(
+        totalAllPrice + 3000
+      ).toLocaleString()} (배송비 포함)`
     );
     if (!confirmed) return;
+
+    //전체상품을 리스트에서 제거
+    setCartItems([]);
+    localStorage.setItem("cartItems", JSON.stringify([]));
 
     alert("주문이 완료되었습니다.");
     navigate("/shop");
@@ -155,7 +186,7 @@ function CartPage() {
                   />
                 </CounterContainer>
                 <ProductPrice>
-                  <div style={{ fontWeight: "600" }}>
+                  <div style={{ display: "flex", fontWeight: "600" }}>
                     ₩{(product.price * (item.quantity ?? 1)).toLocaleString()}
                   </div>
                   <Button
@@ -173,14 +204,14 @@ function CartPage() {
       {/*상품이 있을 때만 전체선택/삭제 버튼 표시 */}
       {cartItems.length > 0 && (
         <>
-          <DeleteButtons>
+          <SelectBtns>
             <span className="btn" onClick={toggleSelectAll}>
               전체선택
             </span>
             <span className="btn" onClick={deleteSelected}>
               선택상품 삭제
             </span>
-          </DeleteButtons>
+          </SelectBtns>
         </>
       )}
 
@@ -231,10 +262,10 @@ const EachProduct = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  height: 380px;
+  height: 100%;
+  /* height: 380px; */
   /* border-top: 1px solid black; */
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
-  /* margin-bottom: 10px; */
 `;
 
 const CounterContainer = styled.div`
@@ -246,15 +277,16 @@ const CounterContainer = styled.div`
 `;
 
 const ProductPrice = styled.div`
-  border-left: 0.5px solid rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  width: 25%;
-  height: 100%;
+  flex: 1; /* 남은 공간 채우기 */
+  align-self: stretch; /* 부모의 높이에 맞춰 세로로 확장 */
   align-items: center;
   justify-content: center;
+  gap: 22px;
+  width: 25%;
   font-size: 28px;
+  border-left: 0.5px solid rgba(0, 0, 0, 0.2);
 `;
 
 const Button = styled.div`
@@ -268,7 +300,7 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
-const DeleteButtons = styled.div`
+const SelectBtns = styled.div`
   display: flex;
   align-items: center;
   height: 72px;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { lightTheme } from "../../styles/theme";
 import productsData from "../../data/product.json";
-
+import CloseIcon from "@mui/icons-material/Close";
 type ProductDescriptionProps = {
   product: {
     id: number;
@@ -39,17 +39,26 @@ const ProductDescription = ({
       </ProductImageWrapper>
 
       <ProductInfo>
-        <ProductHeader>
-          <ProductName>{product.name}</ProductName>
-          <DeleteBox onClick={onDelete}>×</DeleteBox>
-        </ProductHeader>
-        <ProductPrice>₩{product.price.toLocaleString()}</ProductPrice>
-        <Delivery>배송비 3,000원 (50,000원 이상 무료배송)</Delivery>
-        {(item.color || item.size) && (
-          <OptionInfo>
-            옵션: {item.color ?? ""} {item.size ? ` / ${item.size}` : ""}
-          </OptionInfo>
-        )}
+        <InfoSection>
+          <ProductHeader>
+            <ProductName>{product.name}</ProductName>
+            <DeleteBox onClick={onDelete}>
+              <CloseIcon fontSize="inherit" />
+            </DeleteBox>
+          </ProductHeader>
+          <ProductPrice>₩{product.price.toLocaleString()}</ProductPrice>
+        </InfoSection>
+        <InfoSection style={{ justifyContent: "end" }}>
+          <Delivery>배송 ₩3,000</Delivery>
+          {(item.color || item.size) && (
+            <OptionInfo>
+              [ 옵션: {item.color ?? ""} {item.size ? ` / ${item.size}` : ""}]
+              <span style={{ marginLeft: "21px", fontWeight: "bold" }}>
+                옵션변경
+              </span>
+            </OptionInfo>
+          )}
+        </InfoSection>
       </ProductInfo>
     </ProductDescWrapper>
   );
@@ -63,34 +72,19 @@ const ProductDescWrapper = styled.div`
   padding: 40px 40px 40px 0;
   box-sizing: border-box;
   border-right: 0.5px solid rgba(0, 0, 0, 0.2);
-`;
-
-const ProductList = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 20px;
-`;
-
-const ProductRow = styled.div`
-  display: flex;
   gap: 30px;
-  justify-content: space-between;
-  align-items: flex-start;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-  padding-bottom: 20px;
 `;
 
 const CheckBox = styled.input`
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 `;
 
 const ProductImageWrapper = styled.div`
   width: 241px;
   height: 220px;
-  border-radius: 10px;
+  border-radius: 20px;
   overflow: hidden;
   background-color: #f7f7f7;
   display: flex;
@@ -108,45 +102,53 @@ const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  gap: 25px;
+  /* gap: 25px; */
 `;
 
 const ProductHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 26px;
 `;
 
 const ProductName = styled.div`
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
 `;
 
 const ProductPrice = styled.div`
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
-  color: ${lightTheme.colors.secondary};
+  color: ${lightTheme.colors.black};
 `;
 
+const InfoSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 100%;
+`;
 const Delivery = styled.div`
-  font-size: 18px;
-  color: #000;
-  opacity: 0.7;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.25);
 `;
 
 const OptionInfo = styled.div`
-  font-size: 18px;
-  color: #000;
+  margin-top: 20px;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.25);
 `;
 
 const DeleteBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 34px;
-  height: 34px;
+  width: 24px;
+  height: 24px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  font-size: 28px;
+  font-size: 20px;
+  font-weight: 200;
   color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
 
