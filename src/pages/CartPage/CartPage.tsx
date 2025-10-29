@@ -96,6 +96,7 @@ function CartPage() {
     localStorage.setItem("cartItems", JSON.stringify(updated));
   };
 
+  // 선택한 상품 주문
   const handleOrderSelected = () => {
     const selected = cartItems.filter((item) => item.checked);
 
@@ -104,8 +105,23 @@ function CartPage() {
       return;
     }
 
-    const confirmed = window.confirm("선택한 상품을 주문하시겠습니까?");
+    const totalSelectedPrice = selected.reduce((acc, item) => {
+      const product = getProduct(item.id);
+      if (!product) return acc;
+      return acc + product.price * (item.quantity ?? 1);
+    }, 0);
+
+    const confirmed = window.confirm(
+      `선택한 상품을 주문하시겠습니까?\n\n결제 금액: ₩${(
+        totalSelectedPrice + 3000
+      ).toLocaleString()} (배송비 포함)`
+    );
     if (!confirmed) return;
+
+    // 선택된 상품만 제거
+    const updated = cartItems.filter((item) => !item.checked);
+    setCartItems(updated);
+    localStorage.setItem("cartItems", JSON.stringify(updated));
 
     alert("주문이 완료되었습니다.");
     navigate("/shop");
@@ -118,10 +134,22 @@ function CartPage() {
       return;
     }
 
+    const totalAllPrice = cartItems.reduce((acc, item) => {
+      const product = getProduct(item.id);
+      if (!product) return acc;
+      return acc + product.price * (item.quantity ?? 1);
+    }, 0);
+
     const confirmed = window.confirm(
-      "장바구니의 모든 상품을 주문하시겠습니까?"
+      `장바구니의 모든 상품을 주문하시겠습니까?\n\n결제 금액: ₩${(
+        totalAllPrice + 3000
+      ).toLocaleString()} (배송비 포함)`
     );
     if (!confirmed) return;
+
+    //전체상품을 리스트에서 제거
+    setCartItems([]);
+    localStorage.setItem("cartItems", JSON.stringify([]));
 
     alert("주문이 완료되었습니다.");
     navigate("/shop");
@@ -173,14 +201,14 @@ function CartPage() {
       {/*상품이 있을 때만 전체선택/삭제 버튼 표시 */}
       {cartItems.length > 0 && (
         <>
-          <DeleteButtons>
+          <SelectBtns>
             <span className="btn" onClick={toggleSelectAll}>
               전체선택
             </span>
             <span className="btn" onClick={deleteSelected}>
               선택상품 삭제
             </span>
-          </DeleteButtons>
+          </SelectBtns>
         </>
       )}
 
@@ -269,7 +297,7 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
-const DeleteButtons = styled.div`
+const SelectBtns = styled.div`
   display: flex;
   align-items: center;
   height: 72px;
