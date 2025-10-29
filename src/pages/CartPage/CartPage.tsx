@@ -42,6 +42,9 @@ function CartPage() {
 
   // 개별 상품 삭제
   const removeItem = (target: CartItem) => {
+    const confirmed = window.confirm("해당 상품을 삭제하시겠습니까?");
+    if (!confirmed) return; // 취소 누르면 종료
+
     const updated = cartItems.filter(
       (item) =>
         !(
