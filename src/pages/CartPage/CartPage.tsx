@@ -155,7 +155,7 @@ function CartPage() {
                   />
                 </CounterContainer>
                 <ProductPrice>
-                  <div style={{ fontWeight: "600" }}>
+                  <div style={{ display: "flex", fontWeight: "600" }}>
                     ₩{(product.price * (item.quantity ?? 1)).toLocaleString()}
                   </div>
                   <Button
@@ -231,10 +231,10 @@ const EachProduct = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  height: 380px;
+  height: 100%;
+  /* height: 380px; */
   /* border-top: 1px solid black; */
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
-  /* margin-bottom: 10px; */
 `;
 
 const CounterContainer = styled.div`
@@ -246,15 +246,16 @@ const CounterContainer = styled.div`
 `;
 
 const ProductPrice = styled.div`
-  border-left: 0.5px solid rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  width: 25%;
-  height: 100%;
+  flex: 1; /* 남은 공간 채우기 */
+  align-self: stretch; /* 부모의 높이에 맞춰 세로로 확장 */
   align-items: center;
   justify-content: center;
+  gap: 22px;
+  width: 25%;
   font-size: 28px;
+  border-left: 0.5px solid rgba(0, 0, 0, 0.2);
 `;
 
 const Button = styled.div`

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { lightTheme } from "../../styles/theme";
 import productsData from "../../data/product.json";
-
+import CloseIcon from "@mui/icons-material/Close";
 type ProductDescriptionProps = {
   product: {
     id: number;
@@ -41,7 +41,9 @@ const ProductDescription = ({
       <ProductInfo>
         <ProductHeader>
           <ProductName>{product.name}</ProductName>
-          <DeleteBox onClick={onDelete}>×</DeleteBox>
+          <DeleteBox onClick={onDelete}>
+            <CloseIcon fontSize="inherit" />
+          </DeleteBox>
         </ProductHeader>
         <ProductPrice>₩{product.price.toLocaleString()}</ProductPrice>
         <Delivery>배송비 3,000원 (50,000원 이상 무료배송)</Delivery>
@@ -63,27 +65,12 @@ const ProductDescWrapper = styled.div`
   padding: 40px 40px 40px 0;
   box-sizing: border-box;
   border-right: 0.5px solid rgba(0, 0, 0, 0.2);
-`;
-
-const ProductList = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 20px;
-`;
-
-const ProductRow = styled.div`
-  display: flex;
   gap: 30px;
-  justify-content: space-between;
-  align-items: flex-start;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-  padding-bottom: 20px;
 `;
 
 const CheckBox = styled.input`
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 `;
 
@@ -143,10 +130,11 @@ const DeleteBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 34px;
-  height: 34px;
+  width: 24px;
+  height: 24px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  font-size: 28px;
+  font-size: 20px;
+  font-weight: 200;
   color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
 
