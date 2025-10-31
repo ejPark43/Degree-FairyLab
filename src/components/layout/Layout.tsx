@@ -44,7 +44,9 @@ const Main = styled.main<{ $isHome: boolean }>`
     `}
 `;
 const LayoutContainer = styled.div`
-  width: 1920px; /* 고정 페이지 폭 */
-  margin: 0 auto; /* 브라우저 중앙 정렬 */
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
   overflow-x: hidden;
+  position: relative;
 `;
