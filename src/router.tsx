@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import MyPage from "./pages/MyPage";
 import StoryPage from "./pages/StoryPage/StoryPage";
 import ShopPage from "./pages/ShopPage/ShopPage";
-import ArchivePage from "./pages/ArchivePage";
+import ArchivePage from "./pages/ArchivePage/ArchivePage";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import CartPage from "./pages/CartPage/CartPage";
 
