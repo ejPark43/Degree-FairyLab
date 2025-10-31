@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import ProductCard from "./ProductCard";
 import productsData from "../../data/product.json";
 import { lightTheme } from "../../styles/theme";
+import Hourglass from "../../assets/images/Hourglass.png";
 
 function ProductGrid() {
   const [liked, setLiked] = useState<number[]>(
@@ -62,7 +63,16 @@ function ProductGrid() {
             ))}
           </Grid>
         ) : (
-          <EmptyMessage>상품 준비중</EmptyMessage>
+          <Grid>
+            <EmptyMessage>
+              <HourglassImg
+                // loading="lazy"
+                src={Hourglass}
+                alt={"loading-hourglass"}
+              />
+              상품 준비중
+            </EmptyMessage>
+          </Grid>
         )
       ) : (
         <Grid>
@@ -108,16 +118,31 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 52px;
+  width: 1450px;
 `;
 
+const spin = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+const HourglassImg = styled.img`
+  width: 192px;
+  animation: ${spin} 3s linear infinite;
+`;
 const EmptyMessage = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 400px;
+  margin-top: -40px;
+  margin-bottom: 40px;
+  height: 600px;
   width: 100%;
+  gap: 30px;
+  grid-column: 1/-1; // 상위 3*3 그리드에서 이 컴포넌트가 중앙을 차지하도록 하는 코드
   font-size: 22px;
-  color: #888;
+  color: ${lightTheme.colors.black};
+  font-size: 28px;
 `;
 
 const Pagination = styled.div`
