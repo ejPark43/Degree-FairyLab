@@ -38,6 +38,7 @@ function SortDropdown() {
 
 export default SortDropdown;
 const Container = styled.div`
+  align-self: flex-start;
   display: flex;
   position: relative;
   padding: 20px 0 20px 0;

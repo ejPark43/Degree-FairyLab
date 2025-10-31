@@ -12,7 +12,6 @@ function ProductCard({ id, name, price, image, isSoldOut, liked, onLike }) {
     navigate(`/detail/${id}`);
   };
 
-  console.log("image " + image);
   return (
     <Card onClick={handleClick}>
       <ImageContainer>
