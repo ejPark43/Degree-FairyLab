@@ -45,6 +45,7 @@ export default function BannerCarousel() {
 
 const Container = styled.div`
   /* width: 100%; */
+  margin-top: 50px;
   width: 4110px;
   height: 1365px;
   position: relative;
