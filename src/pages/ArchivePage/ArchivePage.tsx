@@ -2,12 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import BannerCarousel from "./BannerCarousel";
 import CharacterCardsSection from "./CharacterCardsSection";
+import CharacterIntroSection from "./CharacterIntroSection";
 
 function ArchivePage() {
   return (
     <Container>
       <BannerCarousel />
       <CharacterCardsSection />
+      <CharacterIntroSection />
     </Container>
   );
 }
