@@ -17,15 +17,14 @@ export default function CharacterCardsSection() {
       <Stars src={ThreeStar} />
 
       <Section>
-        <UserName>페어리랩 🧚</UserName>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
         >
-          <SpeechBubble isRight={false}>
-            당신의 바쁘고 지루한 일상 곳곳에 숨어 있는 요정들을 소개해 드릴게요
-            :)
+          <UserName>페어리랩 🧚</UserName>
+          <SpeechBubble>
+            {`당신의 바쁘고 지루한 일상 곳곳에 \n숨어 있는 요정들을 소개해 드릴게요 :)`}
           </SpeechBubble>
         </motion.div>
 
@@ -74,7 +73,7 @@ const Stars = styled.img`
 `;
 const UserName = styled.div`
   margin-left: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   font-size: 20px;
   color: #8a898e;
 `;
@@ -88,12 +87,12 @@ const Section = styled.section`
 `;
 
 /* 💬 공통 버블 베이스 */
-const SpeechBubble = styled.p<{ isRight?: boolean }>`
+const SpeechBubble = styled.p`
   max-width: 700px;
   min-height: 25px;
   word-wrap: break-word;
   margin-bottom: 12px;
-  line-height: 34px;
+  line-height: 36px;
   position: relative;
   padding: 20px 30px;
   border-radius: 25px;
@@ -101,8 +100,8 @@ const SpeechBubble = styled.p<{ isRight?: boolean }>`
 
   color: white;
   background: #0b93f6;
-  align-self: ${({ isRight }) => (isRight ? "flex-end" : "flex-start")};
-
+  align-self: flex-start;
+  white-space: pre-line;
   /* 꼬리 베이스 1 */
   &::before {
     content: "";
@@ -111,16 +110,8 @@ const SpeechBubble = styled.p<{ isRight?: boolean }>`
     height: 25px;
     width: 20px;
     background-color: #0b93f6;
-    ${({ isRight }) =>
-      isRight
-        ? `
-        right: -7px;
-        border-bottom-left-radius: 16px 14px;
-      `
-        : `
-        left: -7px;
-        border-bottom-right-radius: 16px 14px;
-      `}
+    left: -7px;
+    border-bottom-right-radius: 16px 14px;
   }
 
   /* 꼬리 베이스 2 (배경색) */
@@ -131,16 +122,8 @@ const SpeechBubble = styled.p<{ isRight?: boolean }>`
     height: 25px;
     width: 26px;
     background-color: white;
-    ${({ isRight }) =>
-      isRight
-        ? `
-        right: -26px;
-        border-bottom-left-radius: 10px;
-      `
-        : `
-        left: -26px;
-        border-bottom-right-radius: 10px;
-      `}
+    left: -26px;
+    border-bottom-right-radius: 10px;
   }
 `;
 const CardGrid = styled.div`
