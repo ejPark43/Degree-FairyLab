@@ -59,15 +59,21 @@ export default function CharacterIntroSection() {
             <CharacterGroup isRight={isRight}>
               {isRight ? (
                 <>
-                  <span
+                  <motion.div
                     style={{
                       marginTop: "150px",
                       marginRight: "70px",
                     }}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
                   >
-                    <UserName>{c.userName}</UserName>
-                    <SpeechBubble isRight={isRight}>{c.speech}</SpeechBubble>
-                  </span>
+                    <span>
+                      <UserName>{c.userName}</UserName>
+
+                      <SpeechBubble isRight={isRight}>{c.speech}</SpeechBubble>
+                    </span>
+                  </motion.div>
                   <CharacterImg
                     style={{ width: "420px" }}
                     src={c.src}
@@ -81,16 +87,19 @@ export default function CharacterIntroSection() {
                     src={c.src}
                     alt={c.name}
                   />
-                  <span
+                  <motion.div
                     style={{
-                      // border: "2px solid blue",
                       marginTop: "220px",
-                      // marginLeft: "50px",
                     }}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
                   >
-                    <UserName>{c.userName}</UserName>
-                    <SpeechBubble isRight={isRight}>{c.speech}</SpeechBubble>
-                  </span>
+                    <span>
+                      <UserName>{c.userName}</UserName>
+                      <SpeechBubble isRight={isRight}>{c.speech}</SpeechBubble>
+                    </span>
+                  </motion.div>
                 </>
               )}
             </CharacterGroup>
