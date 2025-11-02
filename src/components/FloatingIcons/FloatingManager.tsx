@@ -32,7 +32,7 @@ const decoPositions: DecoPosition[] = [
     top: "620px",
     left: "150px",
     size: 177,
-    duration: 5,
+    duration: 4,
     delay: 0.7,
     angle: -90,
   },
@@ -41,7 +41,7 @@ const decoPositions: DecoPosition[] = [
     top: "200px",
     right: "900px",
     size: 177,
-    duration: 5,
+    duration: 4,
     delay: 0.7,
     angle: -12,
   },
@@ -58,11 +58,11 @@ const decoPositions: DecoPosition[] = [
   },
   {
     type: 2,
-    top: "150px",
+    top: "130px",
     right: "770px",
     size: 44,
-    duration: 5.2,
-    delay: 0.8,
+    duration: 4,
+    delay: 0.7,
     angle: 1,
   },
   // 뽀 - 컨페티
@@ -90,7 +90,7 @@ const decoPositions: DecoPosition[] = [
     top: "200px",
     left: "250px",
     size: 66,
-    duration: 4,
+    duration: 3,
     delay: 0,
     angle: -155,
   },
@@ -99,7 +99,7 @@ const decoPositions: DecoPosition[] = [
     top: "260px",
     right: "660px",
     size: 66,
-    duration: 4,
+    duration: 3,
     delay: 0,
     angle: 170,
   },
@@ -120,7 +120,7 @@ const decoPositions: DecoPosition[] = [
     top: "975px",
     right: "965px",
     size: 177,
-    duration: 5,
+    duration: 4,
     delay: 0.7,
     angle: 30,
   },
@@ -129,7 +129,7 @@ const decoPositions: DecoPosition[] = [
     top: "1460px",
     right: "415px",
     size: 177,
-    duration: 5,
+    duration: 4,
     delay: 0.7,
     angle: -12,
   },
@@ -149,7 +149,7 @@ const decoPositions: DecoPosition[] = [
     top: "1325px",
     right: "310px",
     size: 44,
-    duration: 5.2,
+    duration: 4,
     delay: 0.8,
     angle: 0,
   },
@@ -168,7 +168,7 @@ const decoPositions: DecoPosition[] = [
     top: "970px",
     right: "240px",
     size: 230,
-    duration: 4.5,
+    duration: 4,
     delay: 1.5,
     angle: 34,
   },
@@ -210,7 +210,7 @@ const decoPositions: DecoPosition[] = [
     top: "2420px",
     left: "850px",
     size: 177,
-    duration: 5,
+    duration: 4,
     delay: 0.7,
     angle: -14,
   },
@@ -219,7 +219,7 @@ const decoPositions: DecoPosition[] = [
     top: "2620px",
     left: "270px",
     size: 136,
-    duration: 5,
+    duration: 4,
     delay: 0.7,
     angle: -1,
   },
@@ -239,7 +239,7 @@ const decoPositions: DecoPosition[] = [
     top: "2455px",
     left: "250px",
     size: 44,
-    duration: 5.2,
+    duration: 4,
     delay: 0.8,
     angle: 0,
   },
@@ -298,18 +298,18 @@ const decoPositions: DecoPosition[] = [
   {
     type: 1,
     top: "3180px",
-    left: "1500px",
+    left: "1570px",
     size: 177,
-    duration: 5,
+    duration: 4,
     delay: 0.7,
     angle: -14,
   },
   {
     type: 1,
-    top: "3350px",
-    left: "1460px",
+    top: "3360px",
+    left: "1530px",
     size: 177,
-    duration: 5,
+    duration: 4,
     delay: 0.7,
     angle: -1,
   },
@@ -321,14 +321,14 @@ const decoPositions: DecoPosition[] = [
     top: "3020px",
     left: "880px",
     size: 44,
-    duration: 5.2,
+    duration: 4.2,
     delay: 0.8,
     angle: 0,
   },
   {
     type: 2,
     top: "3480px",
-    left: "1440px",
+    left: "1520px",
     size: 44,
     duration: 3,
     delay: 0.7,
@@ -347,8 +347,7 @@ const decoPositions: DecoPosition[] = [
   {
     type: 3,
     top: "3270px",
-    left: "1740px",
-
+    left: "1800px",
     size: 178,
     duration: 4.5,
     delay: 1.5,
@@ -356,16 +355,6 @@ const decoPositions: DecoPosition[] = [
   },
 
   // 쵸니 - 하트
-
-  {
-    type: 4,
-    top: "3240px",
-    left: "1735px",
-    size: 66,
-    duration: 4,
-    delay: 0,
-    angle: 170,
-  },
   {
     type: 4,
     top: "3050px",
@@ -374,6 +363,15 @@ const decoPositions: DecoPosition[] = [
     duration: 4,
     delay: 0,
     angle: 138,
+  },
+  {
+    type: 4,
+    top: "3220px",
+    left: "1805px",
+    size: 66,
+    duration: 4,
+    delay: 0,
+    angle: 170,
   },
 ];
 
@@ -408,35 +406,6 @@ export default function FloatingManager() {
     </>
   );
 }
-
-// export default function FloatingManager() {
-//   return (
-//     <>
-//       {decoPositions.map((pos, i) => {
-//         const Deco = components[pos.type - 1];
-//         return (
-//           <Deco
-//             key={i}
-//             style={{
-//               position: "absolute",
-//               top: pos.top,
-//               left: pos.left,
-//               right: pos.right,
-//               bottom: pos.bottom,
-//               width: `${pos.size || 80}px`,
-//               height: "auto",
-//               transform: `rotate(${pos.angle || 0}deg)`, // 🌀 회전 추가
-//               transformOrigin: "center center",
-//             }}
-//             duration={pos.duration}
-//             delay={pos.delay}
-//           />
-//         );
-//       })}
-//     </>
-//   );
-// }
-
 const Container = styled.div`
   display: flex;
   width: 100%;
@@ -447,14 +416,13 @@ const Container = styled.div`
 
 const floatY = keyframes`
   0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
+  50% { transform: translateY(-20px); }
   100% { transform: translateY(0px); }
 `;
 
 export const FloatWrapper = styled.div<{ duration?: number; delay?: number }>`
-  /* animation: ${floatY} ${({ duration }) =>
-    duration || 5}s ease-in-out infinite;
-  animation-delay: ${({ delay }) => delay || 0}s; */
+  animation: ${floatY} ${({ duration }) => duration || 5}s ease-in-out infinite;
+  animation-delay: ${({ delay }) => delay || 0}s;
   will-change: transform;
 `;
 
