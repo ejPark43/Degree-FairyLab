@@ -5,7 +5,7 @@ import productsData from "../../data/product.json";
 import { lightTheme } from "../../styles/theme";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import CartoonWing from "../../assets/images/detailPage/cartoonWing.svg";
+import CartoonWing from "../../assets/images/obje_cartoonWing.svg";
 type ProductType = {
   id: number;
   name: string;
