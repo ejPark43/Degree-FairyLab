@@ -2,13 +2,14 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import ThreeStar from "../../assets/images/stars_blue.svg";
+import NameDeco from "../../assets/images/char_name_deco.svg";
 import { lightTheme } from "../../styles/theme";
 
 export default function CharacterCardsSection() {
   const cards = [
     { src: "images/char_ppo.png", name: "뽀" },
     { src: "images/char_pongsil.png", name: "퐁실" },
-    { src: "images/char_choni.png", name: "초니" },
+    { src: "images/char_choni.png", name: "쵸니" },
     { src: "images/char_ttoring.png", name: "또링" },
   ];
 
@@ -44,7 +45,10 @@ export default function CharacterCardsSection() {
                     alt={card.name}
                   />
                 </CardImageWrapper>
-                <CardName>{card.name}</CardName>
+                <CardName>
+                  {card.name}
+                  <NameDecoration src={NameDeco} />
+                </CardName>
               </Card>
             </motion.div>
           ))}
@@ -197,4 +201,14 @@ const CardName = styled.div`
   background-color: ${lightTheme.colors.buttonBg};
   margin-top: 55px;
   margin-bottom: 30px;
+
+  position: relative;
+`;
+
+const NameDecoration = styled.img`
+  display: flex;
+  height: 79px;
+  position: absolute;
+  left: -30px;
+  /* top: -20px; */
 `;

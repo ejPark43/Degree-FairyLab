@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { lightTheme } from "../../styles/theme";
+import FloatingManager from "../../components/FloatingIcons/FloatingManager";
 export default function CharacterIntroSection() {
   const characters = [
     {
@@ -38,6 +39,7 @@ export default function CharacterIntroSection() {
   ];
   return (
     <Wrapper>
+      <FloatingManager />
       {characters.map((c, i) => {
         const isRight = i % 2 === 0; // 짝수 인덱스 = 오른쪽 배치
         return (
@@ -115,10 +117,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 500px;
+  position: relative;
+  width: 100%;
+  /* height: 100%; */
   /* padding: 200px; */
-  /* border: 2px solid blue; */
   padding-bottom: 400px;
-  margin: 200px 0;
+  margin: 250px 0 200px 0;
 `;
 
 const CharacterBox = styled.div<{ isRight?: boolean }>`
