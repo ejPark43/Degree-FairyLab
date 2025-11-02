@@ -393,8 +393,6 @@ export default function FloatingManager() {
               left: pos.left,
               right: pos.right,
               bottom: pos.bottom,
-              // width: `${pos.size || 80}px`,
-              // height: "auto",
             }}
           >
             <DecoWrapper angle={pos.angle}>
