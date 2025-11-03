@@ -4,6 +4,7 @@ import { lightTheme } from "../../styles/theme";
 import FavoriteIconFilled from "@mui/icons-material/Favorite";
 import FavoriteIconEmpty from "@mui/icons-material/FavoriteBorder";
 import { useNavigate } from "react-router-dom";
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 
 function ProductCard({ id, name, price, image, isSoldOut, liked, onLike }) {
   const navigate = useNavigate();
@@ -29,6 +30,9 @@ function ProductCard({ id, name, price, image, isSoldOut, liked, onLike }) {
             <FavoriteIconEmpty fontSize="inherit" />
           )}
         </LikeButton>
+        <ShoppingBagBtn onClick={handleClick}>
+          <ShoppingBagOutlinedIcon fontSize="inherit" />
+        </ShoppingBagBtn>
       </ImageContainer>
       <Info>
         <ProductName>{name}</ProductName>
@@ -91,6 +95,14 @@ const SoldOutOverlay = styled.div`
   }
 `;
 
+const ShoppingBagBtn = styled.button`
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 45px;
+`;
 const LikeButton = styled.button<{ $liked: boolean }>`
   position: absolute;
   top: 20px;
