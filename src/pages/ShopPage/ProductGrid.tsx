@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 import ProductCard from "./ProductCard";
 import productsData from "../../data/product.json";
 import { lightTheme } from "../../styles/theme";
-import Hourglass from "../../assets/images/Hourglass.png";
+import Hourglass from "../../assets/images/Hourglass.svg";
 
 function ProductGrid() {
   const [liked, setLiked] = useState<number[]>(
