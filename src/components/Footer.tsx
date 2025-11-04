@@ -27,8 +27,10 @@ function Footer() {
         </FooterUpper>
 
         <FooterDowner>
-          <LeftItem></LeftItem>
-          <RightItem>Fairy Lab © 2025</RightItem>
+          <RightItem></RightItem>
+          <RightItem style={{ alignItems: "center" }}>
+            Fairy Lab © 2025
+          </RightItem>
           <RightItem>
             <span>DESIGNED BY 변지민</span>
             <span>DEVELOPED BY 박은주</span>
@@ -54,7 +56,6 @@ const Container = styled.div<{ $active?: boolean }>`
 const FooterBorder = styled.div`
   display: flex;
   flex-direction: column;
-  /* border: 2px solid gold; */
   width: 100%;
   margin: 0 65px 0 65px;
 `;
@@ -76,9 +77,6 @@ const FooterDowner = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-
-  /* box-sizing: border-box; */
-  /* padding: 20px 0 20px 0; */
 `;
 
 /* 공통스타일 */
@@ -87,7 +85,6 @@ const BaseItem = styled.div`
   flex-direction: column;
   font-weight: 400;
   font-size: 18px;
-  /* border: 2px solid pink; */
   padding: 10px 0px;
   > span {
     padding: 5px 0;
@@ -99,6 +96,7 @@ const LeftItem = styled(BaseItem)`
 `;
 
 const RightItem = styled(BaseItem)`
+  flex: 1;
   text-align: end;
   font-weight: 600;
   font-size: 13px;
