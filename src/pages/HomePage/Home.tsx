@@ -1,7 +1,7 @@
 import React from "react";
 import MainTexts from "../assets/images/mainPage/MainTexts.svg";
 import MainCharacter from "../../assets/images/mainPage/maincharacter.svg";
-import HourglassImg from "../../assets/images/Hourglass.png";
+import HourglassImg from "../../assets/images/Hourglass.svg";
 import styled, { keyframes } from "styled-components";
 import BtmSection from "./BtmSection";
 import FloatingManagerHome from "../../components/FloatingIcons/FloatingManagerHome";
